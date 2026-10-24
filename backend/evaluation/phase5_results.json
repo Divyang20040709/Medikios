@@ -1,0 +1,113 @@
+{
+  "n_corpus": 22,
+  "n_queries": 23,
+  "methods": {
+    "keyword": {
+      "overall": {
+        "hit": 95.7,
+        "recall": 93.5,
+        "top1": 100.0,
+        "mrr": 94.6,
+        "script": 73.9
+      },
+      "per_language": {
+        "en": {
+          "hit": 87.5,
+          "recall": 87.5,
+          "top1": 100.0,
+          "mrr": 90.6,
+          "script": 100.0
+        },
+        "hi": {
+          "hit": 100.0,
+          "recall": 94.4,
+          "top1": 100.0,
+          "mrr": 100.0,
+          "script": 100.0
+        },
+        "gu": {
+          "hit": 100.0,
+          "recall": 100.0,
+          "top1": 100.0,
+          "mrr": 91.7,
+          "script": 0.0
+        }
+      },
+      "latency_ms_mean": 0.01,
+      "n_queries": 23
+    },
+    "lexical": {
+      "overall": {
+        "hit": 52.2,
+        "recall": 44.9,
+        "top1": 47.8,
+        "mrr": 52.0,
+        "script": 73.9
+      },
+      "per_language": {
+        "en": {
+          "hit": 62.5,
+          "recall": 52.1,
+          "top1": 62.5,
+          "mrr": 65.0,
+          "script": 100.0
+        },
+        "hi": {
+          "hit": 66.7,
+          "recall": 57.4,
+          "top1": 55.6,
+          "mrr": 61.1,
+          "script": 100.0
+        },
+        "gu": {
+          "hit": 16.7,
+          "recall": 16.7,
+          "top1": 16.7,
+          "mrr": 20.8,
+          "script": 0.0
+        }
+      },
+      "latency_ms_mean": 1.28,
+      "n_queries": 23
+    },
+    "e5": {
+      "overall": {
+        "hit": 82.6,
+        "recall": 64.5,
+        "top1": 73.9,
+        "mrr": 73.0,
+        "script": 73.9
+      },
+      "per_language": {
+        "en": {
+          "hit": 75.0,
+          "recall": 52.1,
+          "top1": 50.0,
+          "mrr": 58.3,
+          "script": 100.0
+        },
+        "hi": {
+          "hit": 88.9,
+          "recall": 74.1,
+          "top1": 77.8,
+          "mrr": 76.3,
+          "script": 100.0
+        },
+        "gu": {
+          "hit": 83.3,
+          "recall": 66.7,
+          "top1": 100.0,
+          "mrr": 87.5,
+          "script": 0.0
+        }
+      },
+      "latency_ms_mean": 20.39,
+      "n_queries": 23,
+      "model_load_seconds": 8.06,
+      "rss_mb_before_model": 161.5,
+      "rss_mb_after_model": 1633.8,
+      "model_delta_mb": 1472.3,
+      "model_disk_mb": 470.4
+    }
+  }
+}

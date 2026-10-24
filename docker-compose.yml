@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: medikiosk-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - NEON_DATABASE_URL=${NEON_DATABASE_URL:-sqlite+aiosqlite:///./medikiosk.db}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+      - OPENROUTER_MODEL=nvidia/nemotron-3-ultra-550b-a55b:free
+      - JWT_SECRET=${JWT_SECRET:?JWT_SECRET must be set in .env (see .env.example)}
+      - BACKEND_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: medikiosk-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+    depends_on:
+      - backend

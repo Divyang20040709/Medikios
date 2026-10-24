@@ -1,0 +1,123 @@
+# ===========================================================================
+# MediKiosk — repository ignore rules
+#
+# Rule of thumb: anything secret, generated, machine-specific, or larger than a
+# few MB never enters Git. A fresh clone must supply .env + the model/dataset
+# artefacts itself (see README.md and docs/WINDOWS_SETUP.md).
+#
+# Verified before first push: `git add -n .` stages 145 files / ~1.6 MB and
+# matches none of .env, *.nemo, model/, datasets/, .venv_speech/, uploads/*,
+# *.db, node_modules/, .next/ or scratch/.
+# ===========================================================================
+
+# --- Secrets & environment -------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+
+# --- Patient documents -----------------------------------------------------
+# Real prescriptions / scans must never reach the repository.
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/data/
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.venv/
+**/.venv/
+venv/
+**/venv/
+backend/venv/
+backend/.venv/
+.venv_speech/
+**/.venv_speech/
+env/
+ENV/
+
+# --- Test / lint / type caches --------------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# --- Local databases (root + backend copies) -------------------------------
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+/medikiosk.db
+/backend/medikiosk.db
+
+# --- Node / Next.js --------------------------------------------------------
+node_modules/
+**/node_modules/
+frontend/node_modules/
+.next/
+**/.next/
+frontend/.next/
+frontend/.next_stale_qa/
+**/.next_stale_qa/
+frontend/out/
+frontend/build/
+*.tsbuildinfo
+.npm
+.yarn
+
+# --- Logs & local runtime state -------------------------------------------
+*.log
+logs/
+*.pid
+*.bak
+*.tmp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Large assets, model weights & datasets --------------------------------
+# Kept on disk only; never commit (GitHub rejects files >100 MB anyway).
+/model/
+/datasets/
+*.nemo
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.joblib
+*.safetensors
+*.h5
+*.bin
+
+# --- QA / scratch ----------------------------------------------------------
+scratch/
+
+# --- IDE / OS / tooling ----------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+*.orig
+*.rej
+.vscode/
+.idea/
+.qoder/
+.claude/
